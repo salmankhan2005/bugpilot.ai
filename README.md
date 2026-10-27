@@ -4,6 +4,20 @@ BugPilot is a local-first browser QA workspace. Signed-in users can create
 projects for verified websites, start a local Chromium run, and inspect
 persisted run events and screenshots.
 
+## Screenshots
+
+### Product landing page
+
+![BugPilot's dark product landing page and browser-run preview](./public/screenshots/product-landing.png)
+
+### Project overview
+
+![BugPilot project overview with run metrics, throughput chart, findings, and route activity](./public/screenshots/project-overview.png)
+
+### Agent Office
+
+![BugPilot Agent Office showing the 3D workspace, agent stations, and run activity](./public/screenshots/agent-office.png)
+
 ## Current implementation
 
 - Firebase Authentication supports email/password and Google sign-in.
