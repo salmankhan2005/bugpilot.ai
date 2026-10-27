@@ -1,0 +1,33 @@
+rules_version = '2';
+
+// Assumed data model:
+// users/{uid}: server-managed account profile. Required fields:
+//   uid: string equal to the document ID; immutable.
+//   email: string or null, max 254 characters; private.
+//   displayName: string or null, max 100 characters.
+//   photoURL: string or null, max 2048 characters.
+//   emailVerified: boolean.
+//   signInProvider: string or null, max 64 characters.
+//   createdAt, updatedAt: Firestore timestamps; createdAt is immutable.
+// Profile documents contain PII and are read/written only by the authenticated
+// Next.js server through Firebase Admin SDK, which bypasses these rules.
+//
+// users/{uid}/projects/{projectId}: server-managed project configuration
+// (name, targetUrl, environment, createdAt, updatedAt). These
+// documents are also accessible only through authenticated server handlers.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, write: if false;
+
+      match /{document=**} {
+        allow read, write: if false;
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
